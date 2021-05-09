@@ -31,6 +31,11 @@ namespace Lesson.Migrations.Infra.Data.Configurations
                 .HasForeignKey(acl => acl.AccountId)
                 .OnDelete(DeleteBehavior.NoAction);
 
+            builder.HasOne(acc => acc.Contract)
+                .WithOne(contract => contract.Account)
+                .HasForeignKey<Account>(acc => acc.ContractId)
+                .OnDelete(DeleteBehavior.NoAction);
+
             builder.HasIndex(i => i.Number).HasDatabaseName("IX_Account_Number");
             builder.HasIndex(acc => acc.Number).HasDatabaseName("IX_Account_Number");
         }

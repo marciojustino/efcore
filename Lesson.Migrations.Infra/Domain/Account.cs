@@ -16,5 +16,7 @@ namespace Lesson.Migrations.Infra.Domain
         public long BankId { get; set; }
         public long AgencyId { get; set; }
         public IList<AccountClient> Owners { get; set; }
+        public Contract Contract { get; set; }
+        public long ContractId { get; set; }
     }
 }
