@@ -4,13 +4,11 @@ namespace Lesson.Migrations.Infra.Data
     using Domain;
     using Microsoft.EntityFrameworkCore;
 
-    public class ApplicationContext : DbContext
+    public class ApplicationDbContext : DbContext
     {
         private readonly LessonConfigurations _lessonConfigurations;
         
-        public DbSet<Account> Account { get; set; }
-
-        public ApplicationContext(LessonConfigurations lessonConfigurations)
+        public ApplicationDbContext(LessonConfigurations lessonConfigurations)
         {
             _lessonConfigurations = lessonConfigurations;
         }
@@ -22,7 +20,7 @@ namespace Lesson.Migrations.Infra.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
         }
     }
 }

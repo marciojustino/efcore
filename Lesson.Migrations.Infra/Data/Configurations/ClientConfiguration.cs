@@ -15,10 +15,11 @@ namespace Lesson.Migrations.Infra.Data.Configurations
 
             builder.HasMany(cli => cli.Accounts)
                 .WithOne(acl => acl.Client)
-                .HasForeignKey(acl => acl.ClientId);
+                .HasForeignKey(acl => acl.ClientId)
+                .OnDelete(DeleteBehavior.NoAction);
 
-            builder.HasIndex(cli => cli.Document).HasDatabaseName("idx_client_document");
-            builder.HasIndex(cli => cli.Name).HasDatabaseName("idx_client_name");
+            builder.HasIndex(cli => cli.Document).HasDatabaseName("IX_Client_Document");
+            builder.HasIndex(cli => cli.Name).HasDatabaseName("IX_Client_Name");
         }
     }
 }

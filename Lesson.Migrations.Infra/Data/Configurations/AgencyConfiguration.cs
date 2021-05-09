@@ -15,14 +15,15 @@ namespace Lesson.Migrations.Infra.Data.Configurations
 
             builder.HasOne(agency => agency.Bank)
                 .WithMany(bank => bank.Agencies)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasForeignKey(bank => bank.BankId)
+                .OnDelete(DeleteBehavior.NoAction);
 
             builder.HasMany(agency => agency.Accounts)
                 .WithOne(account => account.Agency)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.NoAction);
 
-            builder.HasIndex(agency => agency.Code).HasDatabaseName("idx_agency_code");
-            builder.HasIndex(agency => agency.Name).HasDatabaseName("idx_agency_name");
+            builder.HasIndex(agency => agency.Code).HasDatabaseName("IX_Agency_Code");
+            builder.HasIndex(agency => agency.Name).HasDatabaseName("IX_Agency_Name");
         }
     }
 }

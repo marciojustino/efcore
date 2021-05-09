@@ -9,11 +9,12 @@ namespace Lesson.Migrations.Infra.Data.Configurations
         public void Configure(EntityTypeBuilder<AccountClient> builder)
         {
             builder.ToTable("AccountClient");
-            builder.HasKey(acl => acl.Id);
+            builder.HasKey(acl => new {acl.AccountId, acl.ClientId});
 
             builder.HasOne(acl => acl.Account)
                 .WithMany(aco => aco.Owners)
-                .HasForeignKey(acl => acl.AccountId);
+                .HasForeignKey(acl => acl.AccountId)
+                .OnDelete(DeleteBehavior.NoAction);
 
             builder.HasOne(acl => acl.Client)
                 .WithMany(cli => cli.Accounts)

@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Lesson.Migrations.Abstraction\Lesson.Migrations.Abstraction.csproj" />
+    <ProjectReference Include="..\Lesson.Migrations.Infra\Lesson.Migrations.Infra.csproj" />
   </ItemGroup>
 
 </Project>

@@ -15,6 +15,7 @@ using Microsoft.OpenApi.Models;
 namespace Lesson.Migrations.Api
 {
     using Extensions;
+    using Infra.Data;
 
     public class Startup
     {
@@ -28,8 +29,8 @@ namespace Lesson.Migrations.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
+            services.AddDbContext<ApplicationDbContext>();
             services.ConfigureInfra(Configuration);
             services.AddSwaggerGen(c =>
             {
